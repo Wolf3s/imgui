@@ -1,7 +1,8 @@
 DEBUG=1
 
 EE_BIN = ps2_imgui_sample.elf
-EE_OBJS = src/main.o
+EE_OBJS = src/main.o src/drawing/drawing.o src/drawing/drawing_controller.o \
+		  src/widgets/widget_cursor.o src/widgets/widget_gamepad.o src/widgets/widget_icon.o src/widgets/widget_misc.o
 EE_LIBS += -lpad
 
 # Add imgui references
@@ -28,7 +29,7 @@ clean:
 	rm -f $(EE_BIN) $(EE_OBJS)
 
 run: $(EE_BIN)
-	ps2client execee host:$(EE_BIN)
+	ps2client -h 192.168.0.85 execee host:$(EE_BIN)
 
 reset:
 	ps2client reset
