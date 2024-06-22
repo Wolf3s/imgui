@@ -1,16 +1,16 @@
 DEBUG=1
 
 EE_BIN = ps2_imgui_sample.elf
-EE_OBJS = src/main.o src/gfx.o src/pad.o \
-		  src/drawing/drawing.o src/drawing/drawing_controller.o \
-		  src/widgets/widget_cursor.o src/widgets/widget_gamepad.o src/widgets/widget_icon.o src/widgets/widget_misc.o
+EE_OBJS = main.o gfx.o pad.o \
+		  drawing/drawing.o drawing/drawing_controller.o \
+		  widgets/widget_cursor.o widgets/widget_gamepad.o widgets/widget_icon.o widgets/widget_misc.o
 EE_LIBS += -lpad
 
 # Add imgui references
-EE_OBJS += lib/imgui/imgui.o lib/imgui/imgui_demo.o lib/imgui/imgui_draw.o lib/imgui/imgui_tables.o lib/imgui/imgui_widgets.o
-EE_OBJS += lib/imgui/backends/imgui_impl_ps2sdk.o lib/imgui/backends/imgui_impl_ps2gskit.o
-EE_INCS += -Ilib/imgui -Ilib/imgui/backends
-EE_CXXFLAGS += -std=gnu++11
+EE_OBJS += ../../imgui.o ../../imgui_demo.o ../../imgui_draw.o ../../imgui_tables.o ../../imgui_widgets.o
+EE_OBJS += ../../backends/imgui_impl_ps2sdk.o ../../backends/imgui_impl_ps2gskit.o
+EE_INCS += -I../.. -I../../backends
+EE_CXXFLAGS += -std=c++14
 
 # Add gsKit references
 EE_INCS += -I$(GSKIT)/include
